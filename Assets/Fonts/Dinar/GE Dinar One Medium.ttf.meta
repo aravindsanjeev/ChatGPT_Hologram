@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 6ba29d87ac413d24bbab326fded75c5c
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - GE Dinar One
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 387f63d624649cb4eb277566936b9de5, type: 3}
+  - {fileID: 12800000, guid: b00d40ef5df97be44abdd371b6d3f91a, type: 3}
+  - {fileID: 12800000, guid: 0360f689f0c99c746b68708c5ff3fa08, type: 3}
+  - {fileID: 12800000, guid: c14a8aee7730be0409283f9a92cdf4a1, type: 3}
+  - {fileID: 12800000, guid: 8e1229d7f97c92b4b96350eda38d5c29, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

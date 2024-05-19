@@ -1,0 +1,13 @@
+{
+	"paths": {
+		"CharacterBG": "Images/charaterBG.jpg",
+		"Screen2BG": "Images/Screen2BG.jpg",
+		"IDCardTexture": "Images/IDCardTexture.jpg",
+		"IDCardIcon": "Images/IDCardIcon.jpg"
+	},
+	"VoiceRecorderLength": 6,
+	"api_key": "sk-proj-R064rLQz3zdDYk7wKKdoT3BlbkFJWsTN1vItDX4psUOwsA13",
+	"organization": "Personal",
+	"personaOfGPTModel": "Pretend that you are a virtual employee in Sandooq AI Watan, created using AI and your name is Omar.",
+	"Pretext": "Answer in Exactly 20 words."
+}
