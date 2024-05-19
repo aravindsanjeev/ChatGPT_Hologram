@@ -10,7 +10,8 @@ public class EyesBlinker : MonoBehaviour
     bool canClose = false;
     bool canOpen = false;
     bool canOpenClose = false;
-    public float speed = 2;
+    public float OpenSpeed = 20;
+    public float CloseSpeed = 20;
     float incVal = 0;
 
     // Start is called before the first frame update
@@ -47,7 +48,7 @@ public class EyesBlinker : MonoBehaviour
             {
                 if (mesh.GetBlendShapeWeight(15) <= 100)
                 {
-                    incVal += speed;
+                    incVal += CloseSpeed;
                     mesh.SetBlendShapeWeight(15, incVal);
                 }
                 else
@@ -58,9 +59,9 @@ public class EyesBlinker : MonoBehaviour
             }
             else if(canOpen)
             {
-                if (mesh.GetBlendShapeWeight(15) >= 0)
+                if (mesh.GetBlendShapeWeight(15) >= 10)
                 {
-                    incVal -= speed*2;
+                    incVal -= OpenSpeed;
                     mesh.SetBlendShapeWeight(15, incVal);
                 }
                 else

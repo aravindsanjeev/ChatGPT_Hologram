@@ -33,7 +33,7 @@ public class AnimationManager : MonoBehaviour
     void OnStartTalking()
     {
         currentIndex = GetRandomNumberExcluding(1,4,currentIndex);
-        print("######################################### ="+currentIndex);
+        //print("######################################### ="+currentIndex);
         animator.SetInteger("Id", currentIndex);
         //animator.SetInteger("Id", 2);
     }

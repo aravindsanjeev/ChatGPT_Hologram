@@ -6090,7 +6090,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mesh: {fileID: 2108420418}
-  speed: 6
+  OpenSpeed: 20
+  CloseSpeed: 20
 --- !u!1 &825259425
 GameObject:
   m_ObjectHideFlags: 0
@@ -82117,6 +82118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26f1bab3c00fab34a9da61f4c7a8aa44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TTSAudioSource: {fileID: 209497099}
   voiceInput: {fileID: 209497098}
 --- !u!1 &1749123871
 GameObject:
@@ -86044,7 +86046,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2480636403939241134, guid: 5286c472b3e9abb47976fccd0a6e73e0, type: 3}
       propertyPath: m_BlendShapeWeights.Array.data[3]
-      value: 100
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480636403939241134, guid: 5286c472b3e9abb47976fccd0a6e73e0, type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[15]
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2550471778959469217, guid: 5286c472b3e9abb47976fccd0a6e73e0, type: 3}
       propertyPath: m_Layer
