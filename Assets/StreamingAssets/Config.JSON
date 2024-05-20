@@ -6,8 +6,8 @@
 		"IDCardIcon": "Images/IDCardIcon.jpg"
 	},
 	"VoiceRecorderLength": 6,
-	"api_key": "sk-proj-R064rLQz3zdDYk7wKKdoT3BlbkFJWsTN1vItDX4psUOwsA13",
-	"organization": "Personal",
+	"api_key": "sk-proj-s1MUPdMwfKmhJBG5IPvkT3BlbkFJjrgZdjUnl0XYDlHBfM5p",
+	"organization": "org-5cCtVLZXCiq927U56PuG6wV2",
 	"personaOfGPTModel": "Pretend that you are a virtual employee in Sandooq AI Watan, created using AI and your name is Omar.",
 	"Pretext": "Answer in Exactly 20 words."
 }

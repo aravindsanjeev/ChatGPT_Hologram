@@ -1,52 +1,9 @@
-
-using System.Collections;
-using UnityEngine.UI;
 using UnityEngine;
-using Meta.WitAi.TTS.Utilities;
-using Meta.Voice.Audio;
-using OpenAI;
-using SpeechLib;
-using System.Runtime.InteropServices;
-using System.IO;
-using UnityEngine.Networking;
 
 public class AI_VoiceManager : MonoBehaviour
     {
-    #region MicrosoftTTS
-    public AudioSource TTSAudioSource;
-    SpVoice voice = new SpVoice();
-    private SpFileStream fileStream;
-    private IEnumerator PlayAudio(string filePath)
-    {
-        // Wait for the file to be written to disk
-        yield return new WaitForSeconds(1);
-
-        // Load the audio file as a Unity AudioClip
-        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip("file://" + filePath, AudioType.WAV))
-        {
-            yield return www.SendWebRequest();
-
-            if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
-            {
-                Debug.LogError(www.error);
-            }
-            else
-            {
-                AudioClip audioClip = DownloadHandlerAudioClip.GetContent(www);
-                TTSAudioSource.clip = audioClip;
-                TTSAudioSource.Play();
-            }
-        }
-    }
-    #endregion
-
-    bool speakingStarted = false;
-    //bool LastFile = false;
-    int count = 0;
-    int Totalcount = 0;
-    string[] msgs;
-
-    public TTSSpeaker voiceInput;
+    public TTSManager tts;
+    
 
         #region singleton
         public static AI_VoiceManager Instance;
@@ -57,108 +14,16 @@ public class AI_VoiceManager : MonoBehaviour
         }
     #endregion
 
-    /*private void Update()
-    {
-        if(voiceInput.AudioPlayer.IsPlaying)
-        {
-            speakingStarted = true;
-        }
-
-        if (speakingStarted == true)
-        {
-            if (!voiceInput.AudioPlayer.IsPlaying)
-            {
-                Debug.Log("/0/0/0/0/0");
-                voiceInput.waitFromOutSide();
-                speakingStarted = false;
-               *//* voiceInput.StopSpeaking();
-                count++;
-                if(count>Totalcount)
-                {
-                    StopSpeech();
-                    speakingStarted = false;
-                }*//*
-                //Debug.Log("clip speaking ## : "+voiceInput.SpeakingClip.textToSpeak);
-            }
-
-
-        }
-
-        *//*if (LastFile)
-        {
-            if (!voiceInput.AudioPlayer.IsPlaying)
-            {
-                LastFile = false;
-                StopSpeech();
-            }
-        }*//*
-    }*/
+   
 
     public void TextToSpeech_AI(string str)
     {
-        /*
-                //----------------------------------------
-                *//*if(speakingStarted)
-                 {
-                 return;
-                 }*//*
-                count = 1;
-                Debug.Log("received str for Voice Over: " + str);
-
-                    //msgs = str.Split(".");
-
-
-
-                    voiceInput.StartCoroutine(voiceInput.SpeakAsync(str));
-                    //speakingStarted = true;
-                    //LastFile = false;
-                    Totalcount = voiceInput.QueuedClips.Count;
-                    Debug.Log(Totalcount+" = *************************");
-
-                //int count = 1;
-                //voiceInput.SpeakingClip.clipID;
-
-                // StartCoroutine(SpeakAsync(str, true));
-                //voiceInput.Speak(str);
-
-                //----------------------------------------
-        */
-        // Initialize the SpVoice and SpFileStream objects
-        voice = new SpVoice();
-        fileStream = new SpFileStream();
-
-        // Set the output to a WAV file
-        string tempFilePath = Path.Combine(Application.persistentDataPath, "tts_output.wav");
-        fileStream.Open(tempFilePath, SpeechStreamFileMode.SSFMCreateForWrite, false);
-        voice.AudioOutputStream = fileStream;
-
-        // Speak text to the file
-        voice.Speak(str, SpeechVoiceSpeakFlags.SVSFDefault);
-
-        // Close the file stream
-        fileStream.Close();
-
-        // Load and play the audio in Unity
-        StartCoroutine(PlayAudio(tempFilePath));
+        tts.SynthesizeAndPlay(str);
     }
         
         public void StopSpeech()
         {
-            /*if(voiceInput.AudioPlayer.IsPlaying)
-            {
-                voiceInput.Stop();
-                speakingStarted = false;
-            }*/
-
-            if(TTSAudioSource.isPlaying)
-            {
-                if (voice != null)
-                {
-                // Stop the current speech immediately
-                voice.Speak(string.Empty, SpeechVoiceSpeakFlags.SVSFPurgeBeforeSpeak);
-                }
-                TTSAudioSource.Stop();
-            }
+            
         }
 
         public void StartTestSpeech()
