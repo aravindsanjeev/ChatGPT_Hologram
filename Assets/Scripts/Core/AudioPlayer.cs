@@ -3,6 +3,7 @@ using System.IO;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using NAudio.Wave;
 
 [RequireComponent(typeof(AudioSource))]
 public class AudioPlayer : MonoBehaviour
@@ -32,7 +33,8 @@ public class AudioPlayer : MonoBehaviour
             // Optionally, validate the file after writing
             if (ValidateAudioFile(filePath))
             {
-                StartCoroutine(LoadAndPlayAudio(filePath));
+                //StartCoroutine(LoadAndPlayAudio(filePath));
+                StartCoroutine(LoadAndPlayAudioWithNAudio(filePath));
             }
             else
             {
@@ -52,6 +54,55 @@ public class AudioPlayer : MonoBehaviour
         // This example checks the file size, but you can add more sophisticated validation
         FileInfo fileInfo = new FileInfo(filePath);
         return fileInfo.Length > 0; // Basic check: ensure file is not empty
+    }
+
+    private IEnumerator LoadAndPlayAudioWithNAudio(string filePath)
+    {
+        Debug.Log("Attempting to load audio from: " + filePath);
+
+        yield return new WaitForEndOfFrame(); // Just to keep the coroutine signature
+
+        try
+        {
+            using (var mp3Reader = new Mp3FileReader(filePath))
+            {
+                var waveFormat = mp3Reader.WaveFormat;
+                int sampleCount = (int)(mp3Reader.Length / waveFormat.BlockAlign);
+                float[] audioData = new float[sampleCount];
+
+                int i = 0;
+                byte[] buffer = new byte[waveFormat.BlockAlign];
+                int bytesRead;
+
+                while ((bytesRead = mp3Reader.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    for (int j = 0; j < bytesRead / 2; j++)
+                    {
+                        audioData[i++] = BitConverter.ToInt16(buffer, j * 2) / 32768f;
+                    }
+                }
+
+                AudioClip audioClip = AudioClip.Create("audioClip", audioData.Length, waveFormat.Channels, waveFormat.SampleRate, false);
+                audioClip.SetData(audioData, 0);
+
+                audioSource.clip = audioClip;
+
+                if(!Samples.Whisper.WhisperAndAI.IsWhisperInAction)
+                audioSource.Play();
+
+                Debug.Log("%%% NAudio clip successfully loaded and played.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Error while loading audio clip: " + ex.Message);
+        }
+
+        if (deleteCachedFile)
+        {
+            Debug.Log("Deleting cached audio file: " + filePath);
+            File.Delete(filePath);
+        }
     }
 
     private IEnumerator LoadAndPlayAudio(string filePath)

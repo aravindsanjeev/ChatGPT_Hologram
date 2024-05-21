@@ -7,6 +7,7 @@ namespace Samples.Whisper
 {
     public class WhisperAndAI : MonoBehaviour
     {
+        public static bool IsWhisperInAction = false;
         [SerializeField] public Text message;
         [SerializeField] private GameEvent EventStartRecording;
         [SerializeField] private GameEvent EventStopRecording;
@@ -51,6 +52,8 @@ namespace Samples.Whisper
         {
             AI_VoiceManager.Instance.StopSpeech();
 
+            IsWhisperInAction = true;
+
             var index = PlayerPrefs.GetInt("user-mic-device-index");
 
             #if !UNITY_WEBGL
@@ -63,6 +66,8 @@ namespace Samples.Whisper
         public async void EndRecording()
         {
             message.text = "Transcripting...";
+
+            IsWhisperInAction = false;
 
             #if !UNITY_WEBGL
             Microphone.End(Microphone.devices[0]);
