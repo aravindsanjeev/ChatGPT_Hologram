@@ -7,7 +7,7 @@ namespace Samples.Whisper
 {
     public class WhisperAndAI : MonoBehaviour
     {
-        [SerializeField] private Text message;
+        [SerializeField] public Text message;
         [SerializeField] private GameEvent EventStartRecording;
         [SerializeField] private GameEvent EventStopRecording;
         [SerializeField] private int RecordingLength = 5;

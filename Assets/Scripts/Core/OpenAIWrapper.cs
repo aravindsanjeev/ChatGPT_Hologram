@@ -4,11 +4,13 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Net.Http.Headers;
 
+using Samples.Whisper;
+
 public class OpenAIWrapper : MonoBehaviour
 {
     [SerializeField, Tooltip(("Your OpenAI API key. If you use a restricted key, please ensure that it has permissions for /v1/audio."))] private string openAIKey = "api-key";
     private readonly string outputFormat = "mp3";
-    
+    [SerializeField] WhisperAndAI WhisperClass; 
     [System.Serializable]
     private class TTSPayload
     {
@@ -36,15 +38,23 @@ public class OpenAIWrapper : MonoBehaviour
 
         string jsonPayload = JsonUtility.ToJson(payload);
 
+        var txt = WhisperClass.message.text;
+        WhisperClass.message.text = "Preparing Audio...";
+
         var httpResponse = await httpClient.PostAsync(
             "https://api.openai.com/v1/audio/speech", 
             new StringContent(jsonPayload, Encoding.UTF8, "application/json")
         );
 
+        
+
         byte[] response = await httpResponse.Content.ReadAsByteArrayAsync();
+
+        WhisperClass.message.text = "Response For: " + txt;
 
         if (httpResponse.IsSuccessStatusCode) return response;
         
+
         Debug.Log("Error: " + httpResponse.StatusCode);
         return null;
     }
@@ -52,6 +62,7 @@ public class OpenAIWrapper : MonoBehaviour
     public void OnCallBack_TrainingCompleted()
     {
         openAIKey = AI_DataManager.Instance.DataObject.api_key;
+        Debug.Log("api added");
     }
 
     public void SetAPIKey(string openAIKey) => this.openAIKey = openAIKey;

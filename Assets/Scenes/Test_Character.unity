@@ -1138,6 +1138,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfaf23f70fae74149aff3b371587a856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &156800400 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4203340808982979610, guid: b54076d3a1b3342448a41fd8732dd04a, type: 3}
+  m_PrefabInstance: {fileID: 1966998355}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &156800401 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8996109759252394209, guid: b54076d3a1b3342448a41fd8732dd04a, type: 3}
+  m_PrefabInstance: {fileID: 1966998355}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156800400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4401cfede93446b9224e96acd5224f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &156800403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156800400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d14183e4c5de943a93b0fde36774e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  callBacks:
+  - eventObject: {fileID: 11400000, guid: 5928824383cc2c749ae7b2a7451a2545, type: 2}
+    callBack:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 156800401}
+          m_TargetAssemblyTypeName: OpenAIWrapper, Assembly-CSharp
+          m_MethodName: OnCallBack_TrainingCompleted
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &180924072
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1278,7 +1323,7 @@ MonoBehaviour:
   m_ShapeHeight: 0.5
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
-  m_SoftnessScale: 99.29
+  m_SoftnessScale: 65
   m_UseCustomSpotLightShadowCone: 0
   m_CustomSpotLightShadowCone: 30
   m_MaxSmoothness: 0.99
@@ -1321,7 +1366,7 @@ MonoBehaviour:
   m_LightAngle: 1
   m_MaxDepthBias: 0.001
   m_ShadowResolution:
-    m_Override: 512
+    m_Override: 2048
     m_UseOverride: 1
     m_Level: 0
   m_ShadowDimmer: 1
@@ -6515,7 +6560,7 @@ MonoBehaviour:
   m_ShapeHeight: 0.5
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
-  m_SoftnessScale: 99
+  m_SoftnessScale: 250
   m_UseCustomSpotLightShadowCone: 0
   m_CustomSpotLightShadowCone: 30
   m_MaxSmoothness: 0.99
@@ -7050,6 +7095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tts: {fileID: 149952847}
+  aud: {fileID: 149952843}
 --- !u!1 &962735394
 GameObject:
   m_ObjectHideFlags: 0
@@ -78344,7 +78390,7 @@ MonoBehaviour:
   m_ShapeHeight: 0.5
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
-  m_SoftnessScale: 99
+  m_SoftnessScale: 250
   m_UseCustomSpotLightShadowCone: 0
   m_CustomSpotLightShadowCone: 30
   m_MaxSmoothness: 0.99
@@ -82291,10 +82337,21 @@ PrefabInstance:
       propertyPath: openAIKey
       value: sk-aicharacter-GflBUiGJi3kRlKXyRjSDT3BlbkFJlbmSm5DP5dXicDbVDLyF
       objectReference: {fileID: 0}
+    - target: {fileID: 8996109759252394209, guid: b54076d3a1b3342448a41fd8732dd04a, type: 3}
+      propertyPath: WhisperClass
+      value: 
+      objectReference: {fileID: 1830335251}
+    - target: {fileID: 8996109759252394209, guid: b54076d3a1b3342448a41fd8732dd04a, type: 3}
+      propertyPath: TranscriptionText
+      value: 
+      objectReference: {fileID: 1225612725}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4203340808982979610, guid: b54076d3a1b3342448a41fd8732dd04a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 156800403}
   m_SourcePrefab: {fileID: 100100000, guid: b54076d3a1b3342448a41fd8732dd04a, type: 3}
 --- !u!1 &2008776772
 GameObject:
@@ -84782,7 +84839,7 @@ Transform:
   m_GameObject: {fileID: 1669185312983503875}
   serializedVersion: 2
   m_LocalRotation: {x: 0.05756407, y: 0, z: 0, w: 0.99834186}
-  m_LocalPosition: {x: 0, y: 12.2, z: -27.3}
+  m_LocalPosition: {x: 0, y: 12.5, z: -28.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

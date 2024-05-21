@@ -3,6 +3,7 @@ using UnityEngine;
 public class AI_VoiceManager : MonoBehaviour
     {
     public TTSManager tts;
+    public AudioSource aud;
     
 
         #region singleton
@@ -23,7 +24,8 @@ public class AI_VoiceManager : MonoBehaviour
         
         public void StopSpeech()
         {
-            
+            if(aud.isPlaying)
+            aud.Stop();
         }
 
         public void StartTestSpeech()
