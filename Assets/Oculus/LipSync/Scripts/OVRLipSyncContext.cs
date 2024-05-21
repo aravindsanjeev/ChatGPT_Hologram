@@ -60,6 +60,7 @@ public class OVRLipSyncContext : OVRLipSyncContextBase
     public KeyCode debugLaughterKey = KeyCode.H;
     public bool showLaughter = false;
     public float laughterScore = 0.0f;
+    public OVRLipSyncMicInput mic;
 
     // * * * * * * * * * * * * *
     // Private members
