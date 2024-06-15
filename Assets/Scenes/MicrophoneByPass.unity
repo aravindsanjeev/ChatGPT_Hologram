@@ -71502,7 +71502,7 @@ PrefabInstance:
     - target: {fileID: 7167893675499469307, guid: e6f7aeba9af5fd24eafca2cc386f7068, type: 3}
       propertyPath: callBacks.Array.data[0].eventObject
       value: 
-      objectReference: {fileID: 11400000, guid: 5928824383cc2c749ae7b2a7451a2545, type: 2}
+      objectReference: {fileID: 11400000, guid: 18312d967d75dee48b74b2bf88e761c6, type: 2}
     - target: {fileID: 9058202026789711415, guid: e6f7aeba9af5fd24eafca2cc386f7068, type: 3}
       propertyPath: m_Name
       value: ID_Card
@@ -71521,6 +71521,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1223478501455212385, guid: e6f7aeba9af5fd24eafca2cc386f7068, type: 3}
   m_PrefabInstance: {fileID: 1513325889}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1513325892 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2983530441910240684, guid: e6f7aeba9af5fd24eafca2cc386f7068, type: 3}
+  m_PrefabInstance: {fileID: 1513325889}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb928b8fbbb31345b4d676b174efa3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1567251287
 GameObject:
   m_ObjectHideFlags: 0
@@ -72295,6 +72306,66 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1223478501455212385, guid: e6f7aeba9af5fd24eafca2cc386f7068, type: 3}
   m_PrefabInstance: {fileID: 2023902393687464281}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2135034713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2135034715}
+  - component: {fileID: 2135034714}
+  m_Layer: 0
+  m_Name: AI_Data_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2135034714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135034713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6e3b0a1dac4d544b9037aa632b6711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configFileName: Config.JSON
+  configPath: 
+  Event_DataLoaded: {fileID: 11400000, guid: 18312d967d75dee48b74b2bf88e761c6, type: 2}
+  DataObject:
+    paths:
+      CharacterBG: 
+      Screen2BG: 
+      IDCardTexture: 
+      IDCardIcon: 
+    VoiceRecorderLength: 0
+    api_key: 
+    organization: 
+    personaOfGPTModel: 
+    Pretext: 
+  cardManager: {fileID: 1513325892}
+  BGChanger: {fileID: 5192069771429640519}
+--- !u!4 &2135034715
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135034713}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &9559646101648214
 Transform:
   m_ObjectHideFlags: 0
@@ -76372,7 +76443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   callBacks:
-  - eventObject: {fileID: 11400000, guid: 5928824383cc2c749ae7b2a7451a2545, type: 2}
+  - eventObject: {fileID: 11400000, guid: 18312d967d75dee48b74b2bf88e761c6, type: 2}
     callBack:
       m_PersistentCalls:
         m_Calls:
@@ -78339,3 +78410,4 @@ SceneRoots:
   - {fileID: 884714688}
   - {fileID: 1101653627}
   - {fileID: 1225588293}
+  - {fileID: 2135034715}

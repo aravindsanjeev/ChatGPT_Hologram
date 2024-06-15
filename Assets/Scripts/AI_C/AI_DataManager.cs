@@ -11,7 +11,9 @@ public class AI_DataManager : MonoBehaviour
     public string configPath;
     [SerializeField] GameEvent Event_DataLoaded;
     public AI_FilesModelClass DataObject = new AI_FilesModelClass();
-    public AI_ChatGPT_Integration chatGPT = new AI_ChatGPT_Integration();
+    //public AI_ChatGPT_Integration chatGPT = new AI_ChatGPT_Integration();
+    public IDCard_Manager cardManager;
+    public BG_Changer BGChanger;
 
     #region Singleton
     public static AI_DataManager Instance;
@@ -46,9 +48,11 @@ public class AI_DataManager : MonoBehaviour
             DataObject = data;
             //DataObject.paths = new path();
             DataObject.paths = data.paths;
-            
-            chatGPT.Initialize();
-        }
+
+            //chatGPT.Initialize();
+            cardManager.OnDataLoaded_CallBack();
+            BGChanger.ChangeBG();
+}
     }
 
 }
